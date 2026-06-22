@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藤原学 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>藤原学 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. ウェルス・コンサルティング株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">事業責任者（COO候補）</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">ウェルス・コンサルティング株式会社</div>
+  <div class="co-url"><a href="https://morich-inc.github.io/job-wealth-consulting-coo/" target="_blank">https://morich-inc.github.io/job-wealth-consulting-coo/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区東1-26-30 SHIBUYA EAST BLDG8F</td></tr><tr><th>従業員数</th><td>約40名（役員・本社スタッフ・クリニックスタッフ含む、業務委託含む）</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>医療×デジタル領域で急成長中のベンチャーで、COO候補として経営そのものを動かせるポジション</li><li>オーナー経営者と直接タッグを組み、時価総額1兆円を目指す高い志のもとで活躍できる環境</li><li>年間休日140日以上・完全週休2日制と、ワークライフバランスも整備された環境</li><li>みなし残業40時間超過分は別途支給と、処遇面も透明性あり</li><li>新規事業立ち上げ・M&A・グローバル展開など、非連続成長を牽引できるチャンス</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">ウェルス・コンサルティング株式会社は、医療×デジタルの領域で急成長するベンチャー企業です。クリニック向けマーケティング支援と自社美容クリニック経営の2本柱で事業を展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ウェルス・コンサルティング株式会社は、医療×デジタルの領域で急成長するベンチャー企業です。</p><p><strong>▼代表経歴</strong></p><ul><li>不動産会社出身</li><li>船井総合研究所（船井総研）で不動産・飲食のコンサルを担当</li><li>独立後、医療分野に特化して事業展開</li></ul><p><strong>▼従業員規模</strong></p><p>約40名（役員・本社スタッフ・クリニックスタッフ含む、業務委託含む）</p><p><strong>▼事業の2本柱</strong></p><ul><li>クリニック向けマーケティング支援（MEO、SNS、レビュー対策、LINEマーケ等のWeb施策を中核。Googleマップ運用・解説の提供あり）</li><li>自社での美容クリニック経営（新宿のDuoクリニック）による実践知の獲得</li></ul><p><strong>▼現在の主要課題（組織・オペレーション）</strong></p><ul><li><strong>属人性の高さ：</strong>ノウハウ・成果が特定個人に依存、「再現性」が最大の課題</li><li><strong>データ活用運用不足：</strong>収集・パターン認識・AI分析の着手で「わかってきている」が、PDCAの継続運用と現場浸透を率先改善できる人材が不足</li><li><strong>マネジメント層の経験不足：</strong>新卒入社7年目の若手マネージャーが非常に頑張っている一方、外部経験がないため新規インプットに限界。外の実装・比較・改善に長けた経験者が必要</li><li><strong>組織構築のリーダーシップ不在：</strong>ユニットを牽引する明確な「ユニットリーダー」が不在。各ユニットを強化し組織全体を引き上げる戦略視点を持つ人材が不足</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業責任者（COO候補）</div>
+          <div class="job-preview">医療×デジタル領域で急成長するベンチャーのCOO候補として、100億円→1000億円へのスケーリング戦略を担う事業統括ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【ポジション概要】</strong></p><p>ウェルス・コンサルティングは、医療×デジタルの領域で急成長するベンチャーです。今回募集する事業開発責任者は、100億円→1000億円へのスケーリング戦略を一手に担うCOO候補ポジション。新規事業立ち上げからグローバル展開、組織体制構築まで、経営そのものを動かせるチャンスです。オーナー経営者と直接タッグを組み、時価総額1兆円を目指す高い志のもとで、あなたのコンサル経験が最大限に活かされる環境です。</p><p><strong>【『ウェルス・コンサルティング事業』の課題】</strong></p><p>下記の事業目標に対し、ノウハウ・成果が俗人的でもあり、「再現性の組織浸透」が最大の課題</p><ul><li>市場一番のポジション確立へ、マーケ支援・コンサル領域の再現性を高め、保険診療での拡張を加速</li><li>今後の多店舗展開に対応するため、オペ標準化・KPI設計・地域特性に応じた集客モデル等、勝ちパターンの横展開を強化</li></ul><p><strong>【基本業務内容】</strong></p><ul><li>既存事業（マーケティング支援）の事業戦略立案、事業推進、組織マネジメント全般をCOO候補として期待</li><li>マーケ－IS－FS－CSの事業統括全般（現在はトータルで社員10名＋業務委託数名の体制、今後増員も計画）</li><li>属人的な事業構造から再現性ある組織への変革構築（採用・育成、評価制度、ナレッジ管理、プレイブック整備、トレーニング設計と運用）</li></ul><p><strong>【その先の期待アビリティ】</strong></p><ul><li>事業モデル・ターゲットの見直しを含む大胆な事業・組織変革の推進</li><li>既存の延長線ではない非連続成長の推進</li></ul><p>ゆくゆくは上記のアビリティまで最大限発揮いただき、今後の売上目標100億円以上の実現のため、スケーリング戦略の立案・実行、新規事業立ち上げ（M&A仲介・買収他）、グローバル展開の具体化、データドリブン経営システムの構築などを共に担っていただきます。</p><p><strong>【応募資格】</strong></p><p><span class='tag tag-must'>MUST</span> 事業開発・新規事業立ち上げ経験</p><p><span class='tag tag-must'>MUST</span> 経営層との関係構築能力</p><p><span class='tag tag-must'>MUST</span> 非連続な成長戦略の立案・実行経験</p><p><span class='tag tag-must'>MUST</span> SaaS・ベンチャー・コンサルティング業界での事業開発または新規事業立ち上げ経験</p><p><span class='tag tag-must'>MUST</span> 経営層との関係構築・協働経験</p><p><span class='tag tag-must'>MUST</span> 複数事業の同時推進マネジメント経験</p><p><span class='tag tag-must'>MUST</span> ビジネスパートナーシップ構築経験（M&A・提携等）</p><p><span class='tag tag-must'>MUST</span> データ活用の実務経験</p><p><span class='tag tag-want'>WANT</span> 医療業界知見</p><p><span class='tag tag-want'>WANT</span> M&A経験</p><p><span class='tag tag-want'>WANT</span> グローバル展開経験</p><p><span class='tag tag-want'>WANT</span> データドリブン経営の経験</p><p><strong>【求める人物像】</strong></p><p>事業規模100億円以上へのスケーリングに対応でき、マネジメント層の育成と組織体制構築ができる戦略家。医療業界への学習意欲があり、代表のビジョン共有者。</p><p><strong>【給与】</strong></p><p>800万円〜1,200万円</p><p><strong>【勤務時間】</strong></p><p>10:00〜19:00（実働8時間／休憩60分）・みなし残業40時間／超過分は別途支給</p><p><strong>【休日休暇】</strong></p><ul><li>年間休日140日以上</li><li>完全週休2日制（土日休み）</li><li>祝日休み</li><li>年末年始休暇（10日前後）</li><li>GW休暇</li><li>夏季休暇（10日前後）</li></ul><p><strong>【待遇・福利厚生】</strong></p><p>雇用・労災・健康・厚生年金</p><p><strong>【雇用形態】</strong></p><p>正社員（試用期間有）</p>
+        <div class="meta-pills"><span class="pill">📍 東京（渋谷区）</span><span class="pill">💰 800万円〜1,200万円</span><span class="pill">🗓️ 年間休日140日以上</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://morich-inc.github.io/job-wealth-consulting-coo/" target="_blank">📄 求人票を見る</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが藤原学 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
